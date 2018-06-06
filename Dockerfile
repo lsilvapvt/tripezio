@@ -1,7 +1,5 @@
 FROM ponzu/ponzu:latest
 
-RUN apt-get update -qq
-
 ENV GOPATH /go
 ENV GO_SRC $GOPATH/src
 ENV TRIPEZIO_ROOT github.com/lsilvapvt/tripezio
@@ -16,7 +14,9 @@ WORKDIR $PROJECT_ROOT
 COPY . .
 
 # the following runs the code inside of the $GO_SRC/$PONZU_GITHUB directory
-RUN ponzu build --gocmd=go1.8rc1
+RUN ponzu build
+
+EXPOSE 9888
 
 # Define the scripts we want run once the container boots
-# CMD [ "ponzu run --port=9088" ]
+# CMD [ "ponzu","run","--port=9888" ]
