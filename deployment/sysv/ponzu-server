@@ -8,9 +8,9 @@
 # Description:       Ponzu API & Admin server
 ### END INIT INFO
 
-PROJECT_DIR=<PROJECT DIRECTORY>
-SCRIPT="cd $PROJECT_DIR && ponzu run --port=80" # add --https here to get TLS/HTTPS
-RUNAS=<USER>
+PROJECT_DIR=~/go/src/github.com/lsilvapvt/tripezio
+SCRIPT="cd $PROJECT_DIR && ponzu run --port=8080 --https --bind tripezio.com"
+RUNAS=root
 
 PIDFILE=/var/run/ponzu-server.pid
 LOGFILE=/var/log/ponzu-server.log
