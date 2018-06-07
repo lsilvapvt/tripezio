@@ -12,7 +12,7 @@ type Poi struct {
 
 	Name        string   `json:"name"`
 	Description string   `json:"description"`
-	Tags        string   `json:"tags"`
+	Tags        []string `json:"tags"`
 	Photos      []string `json:"photos"`
 	Latitude    float64  `json:"latitude"`
 	Longitude   float64  `json:"longitude"`
@@ -138,5 +138,5 @@ func init() {
 // String defines how a Poi is printed. Update it using more descriptive
 // fields from the Poi struct type
 func (p *Poi) String() string {
-	return fmt.Sprintf("%s", p.Name)
+	return fmt.Sprintf("%s, %s %s - %s", p.Name, p.City, p.State, p.Country)
 }
