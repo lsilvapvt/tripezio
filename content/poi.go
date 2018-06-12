@@ -23,6 +23,8 @@ type Poi struct {
 	ZipCode     string   `json:"zipcode"`
 	Country     string   `json:"country"`
 	Rating      int      `json:"rating"`
+	Articles    []string `json:"articles"`
+	Videos      []string `json:"videos"`
 }
 
 // MarshalEditor writes a buffer of html to edit a Poi within the CMS
@@ -120,6 +122,18 @@ func (p *Poi) MarshalEditor() ([]byte, error) {
 				"label":       "Rating",
 				"type":        "text",
 				"placeholder": "Enter the Rating here",
+			}),
+		},
+		editor.Field{
+			View: editor.InputRepeater("Articles", p, map[string]string{
+				"label":       "Related Articles",
+				"placeholder": "Upload a related article URL here",
+			}),
+		},
+		editor.Field{
+			View: editor.InputRepeater("Videos", p, map[string]string{
+				"label":       "Related Videos",
+				"placeholder": "Upload a related video URL here",
 			}),
 		},
 	)
